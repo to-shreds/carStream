@@ -1,0 +1,78 @@
+name: CarStream CI
+on:
+  push:
+    paths-ignore: ['docs/**', 'README.md', 'STATUS.md']
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: android-actions/setup-android@v3
+        with:
+          log-accepted-android-sdk-licenses: false
+          packages: 'platform-tools platforms;android-35 build-tools;35.0.0'
+      - name: Verify imported source provenance
+        run: |
+          python - <<'PY'
+          import hashlib,json,pathlib,subprocess
+          manifest=json.loads(pathlib.Path('docs/baseline-provenance.json').read_text())
+          baseline='20d5102a2def828c40e923c4f8ec72aef73ccc0a'
+          for name,expected in manifest['files'].items():
+              data=subprocess.check_output(['git','show',baseline+':'+name])
+              assert hashlib.sha256(data).hexdigest()==expected['sha256'],name
+          print('All 72 files in the immutable baseline commit match the original source archive.')
+          for name in subprocess.check_output(['git','ls-files'],text=True).splitlines():
+              assert pathlib.Path(name).suffix.lower() not in {'.jks','.keystore','.p12','.pem','.key'},name
+          PY
+      - name: Compile, package and run regression tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          export ANDROID_BUILD_TOOLS="$ANDROID_HOME/build-tools/35.0.0"
+          export ANDROID_JAR="$ANDROID_HOME/platforms/android-35/android.jar"
+          export ECJ_JAR="$RUNNER_TEMP/ecj.jar"
+          export JSON_JAR="$RUNNER_TEMP/json.jar"
+          curl -fsSL https://repo.maven.apache.org/maven2/org/eclipse/jdt/ecj/3.33.0/ecj-3.33.0.jar -o "$ECJ_JAR"
+          curl -fsSL https://repo.maven.apache.org/maven2/org/json/json/20240303/json-20240303.jar -o "$JSON_JAR"
+          export CARSTREAM_KEYSTORE="$RUNNER_TEMP/ci-only.jks"
+          export CARSTREAM_KEY_ALIAS=ci-only
+          export CARSTREAM_STORE_PASS="$(openssl rand -hex 24)"
+          export CARSTREAM_KEY_PASS="$CARSTREAM_STORE_PASS"
+          echo "::add-mask::$CARSTREAM_STORE_PASS"
+          keytool -genkeypair -keystore "$CARSTREAM_KEYSTORE" -alias ci-only -storepass "$CARSTREAM_STORE_PASS" -keypass "$CARSTREAM_KEY_PASS" -dname 'CN=CI test only' -keyalg RSA -keysize 3072 -validity 1 >/dev/null 2>&1
+          rm -f validation/stremio-results.json validation/logic-results.json
+          python scripts/build_release.py "$RUNNER_TEMP/ci-only.apk"
+          python validation/run_stremio_test.py
+          (cd validation && npm install --ignore-scripts --no-audit --no-fund && npm test)
+          mkdir -p verification/signing-tool
+          cp "$ANDROID_BUILD_TOOLS/lib/apksigner.jar" verification/signing-tool/
+          cp build-standalone/aligned.apk verification/repository-built-unsigned.apk
+          cp validation/stremio-results.json validation/logic-results.json verification/
+          "$ANDROID_BUILD_TOOLS/aapt2" dump badging verification/repository-built-unsigned.apk > verification/package.txt
+          python - <<'PY'
+          import hashlib,json,pathlib,subprocess,zipfile
+          apk=pathlib.Path('verification/repository-built-unsigned.apk')
+          with zipfile.ZipFile(apk) as z:
+              payload={n:hashlib.sha256(z.read(n)).hexdigest() for n in sorted(z.namelist())}
+          report={'commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'java_sources':len(list(pathlib.Path('app/src/main/java').rglob('*.java'))),'apk_sha256':hashlib.sha256(apk.read_bytes()).hexdigest(),'payload_sha256':payload,'original_signing_key_used':False,'apk_is_unsigned':True,'physical_device_tested':False}
+          pathlib.Path('verification/build.json').write_text(json.dumps(report,indent=2)+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: repository-build-${{ github.sha }}
+          path: verification/
+          if-no-files-found: error
+          retention-days: 14
