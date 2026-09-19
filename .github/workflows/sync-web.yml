@@ -1,0 +1,69 @@
+name: Generate pinned canonical web snapshot
+on:
+  push:
+    branches: [carstream-2.0]
+    paths: ['web/TORBOX_WEB_REVISION', 'scripts/sync_torbox_web.py', 'validation/test_web_sync.py', '.github/workflows/sync-web.yml']
+permissions:
+  contents: write
+concurrency:
+  group: carstream-web-sync
+  cancel-in-progress: false
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Read immutable canonical pin
+        id: pin
+        run: |
+          python - <<'PY'
+          import os,pathlib,re
+          revision=pathlib.Path('web/TORBOX_WEB_REVISION').read_text().strip()
+          assert re.fullmatch('[a-f0-9]{40}',revision)
+          with open(os.environ['GITHUB_OUTPUT'],'a') as out: out.write('revision='+revision+'\n')
+          PY
+      - uses: actions/checkout@v6
+        with:
+          repository: to-shreds/torbox-web-player
+          ref: ${{ steps.pin.outputs.revision }}
+          fetch-depth: 0
+          path: .canonical-source
+          persist-credentials: false
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+      - name: Run cross-repository safety tests and generate snapshot
+        env:
+          CARSTREAM_CANONICAL_REPO: ${{ github.workspace }}/.canonical-source
+        run: |
+          set -euo pipefail
+          python -m unittest discover -s validation -p test_web_sync.py > "$RUNNER_TEMP/sync-tests.log" 2>&1 || { cat "$RUNNER_TEMP/sync-tests.log"; exit 1; }
+          tail -6 "$RUNNER_TEMP/sync-tests.log"
+          python scripts/sync_torbox_web.py --canonical-repo .canonical-source --update
+          python scripts/sync_torbox_web.py --canonical-repo .canonical-source --check
+          python - <<'PY'
+          import json,os,pathlib,re
+          manifest=json.loads(pathlib.Path('web/generated/asset-manifest.json').read_text())
+          log=(pathlib.Path(os.environ['RUNNER_TEMP'])/'sync-tests.log').read_text()
+          tests=int(re.search(r'^Ran (\d+) tests',log,re.M)[1])
+          report={'canonical_revision':manifest['revision'],'assets':len(manifest['assets']),'sync_safety_tests_passed':tests,'generated_snapshot_verified':True,'android_host_wired':False,'physical_device_tested':False}
+          pathlib.Path('docs/WEB-SNAPSHOT-VERIFICATION.json').write_text(json.dumps(report,indent=2)+'\n')
+          PY
+          git config user.name 'CarStream web sync'
+          git config user.email 'carstream-web-sync@users.noreply.github.com'
+          git add web/generated docs/WEB-SNAPSHOT-VERIFICATION.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Regenerate the verified canonical web snapshot without independent UI edits'
+            git push origin HEAD:carstream-2.0
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: web-snapshot-verification
+          path: |
+            docs/WEB-SNAPSHOT-VERIFICATION.json
+            web/generated/asset-manifest.json
+            ${{ runner.temp }}/sync-tests.log
+          retention-days: 7

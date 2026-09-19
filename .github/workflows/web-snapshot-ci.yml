@@ -1,0 +1,54 @@
+name: Canonical web snapshot CI
+on:
+  push:
+    branches: [carstream-2.0]
+    paths: ['web/**', 'scripts/sync_torbox_web.py', 'validation/test_web_sync.py', '.github/workflows/web-snapshot-ci.yml']
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Read canonical commit pin
+        id: pin
+        run: |
+          python - <<'PY'
+          import os,pathlib,re
+          revision=pathlib.Path('web/TORBOX_WEB_REVISION').read_text().strip()
+          assert re.fullmatch('[a-f0-9]{40}',revision)
+          with open(os.environ['GITHUB_OUTPUT'],'a') as out: out.write('revision='+revision+'\n')
+          PY
+      - uses: actions/checkout@v6
+        with:
+          repository: to-shreds/torbox-web-player
+          ref: ${{ steps.pin.outputs.revision }}
+          fetch-depth: 0
+          path: .canonical-source
+          persist-credentials: false
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+      - name: Reject drift and run sync safety tests
+        env:
+          CARSTREAM_CANONICAL_REPO: ${{ github.workspace }}/.canonical-source
+        run: |
+          set -euo pipefail
+          python scripts/sync_torbox_web.py --canonical-repo .canonical-source --check
+          python -m unittest discover -s validation -p test_web_sync.py > "$RUNNER_TEMP/web-sync-tests.log" 2>&1 || { cat "$RUNNER_TEMP/web-sync-tests.log"; exit 1; }
+          tail -6 "$RUNNER_TEMP/web-sync-tests.log"
+          git diff --exit-code
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: web-snapshot-check
+          path: |
+            web/generated/asset-manifest.json
+            ${{ runner.temp }}/web-sync-tests.log
+          retention-days: 7
