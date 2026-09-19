@@ -1,0 +1,8 @@
+{
+  "canonical_revision": "f5fd321ac72f05e7c2524266001a2689e72bf0d2",
+  "assets": 23,
+  "sync_safety_tests_passed": 8,
+  "generated_snapshot_verified": true,
+  "android_host_wired": false,
+  "physical_device_tested": false
+}

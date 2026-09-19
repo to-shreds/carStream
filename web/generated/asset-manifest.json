@@ -1,0 +1,129 @@
+{
+  "schema": 1,
+  "repository": "to-shreds/torbox-web-player",
+  "revision": "f5fd321ac72f05e7c2524266001a2689e72bf0d2",
+  "runtime": "carstream",
+  "apiPrefix": "/tw",
+  "csp": "default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; media-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; object-src 'none'; form-action 'self'",
+  "requiredHostModules": [
+    "/carstream/host.js"
+  ],
+  "requiresPhoneServices": true,
+  "assets": {
+    ".nojekyll": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "generated": false
+    },
+    "app.js": {
+      "sha256": "b806113b33a5670d52948b0e9924ada70d6dee5e9519a5ff02397ec8c3380040",
+      "bytes": 55642,
+      "generated": false
+    },
+    "carstream-entry.js": {
+      "sha256": "97253f39aa1e5445b8e3ed6a0627b86ca7e02619ea8bb6690797924772c1e356",
+      "bytes": 452,
+      "generated": true
+    },
+    "discover.css": {
+      "sha256": "46d15ecef7c766bfd6754bb1ca40d70d64589258f15e902863d981e6cd6e6302",
+      "bytes": 24056,
+      "generated": false
+    },
+    "discover.js": {
+      "sha256": "fea645b1973cfc2d5917469193f47aabfb513ff4ea5affbb49ba71aa86057535",
+      "bytes": 39079,
+      "generated": false
+    },
+    "history.js": {
+      "sha256": "b97fa68a8d3c70900a6dc4bfa721c08c95368f05d70d98d07d9e0e1d5169a81d",
+      "bytes": 4219,
+      "generated": false
+    },
+    "icon.svg": {
+      "sha256": "00089c2c733d6c62f1df78ea35e93f6272a08288c63a30f6c3c2822511b4e77d",
+      "bytes": 173,
+      "generated": false
+    },
+    "index.html": {
+      "sha256": "052d7aad6d2251c4bc56f8f5c40c33f05fc89506fe05d85262a5b4916d8c995a",
+      "bytes": 22226,
+      "generated": true
+    },
+    "manifest.webmanifest": {
+      "sha256": "c317b7666421d73a690f51987a570f0ccd1f681938a51f6fdb129fa1b718d80f",
+      "bytes": 338,
+      "generated": false
+    },
+    "parental-controls.js": {
+      "sha256": "730605119edcc0f815473b42b4dee1b8a23a520a2dd3fe9df18f8a44a63fbf7f",
+      "bytes": 10834,
+      "generated": false
+    },
+    "password.js": {
+      "sha256": "43af1542ba3dd07ee8504a590685508f286d72ab81e336019c88b4a414740039",
+      "bytes": 1769,
+      "generated": false
+    },
+    "playback-errors.js": {
+      "sha256": "ee00919895a97ef7c735342a96c5f4f8ae3f18a04c325d7677986b4d8b1baabf",
+      "bytes": 1625,
+      "generated": false
+    },
+    "runtime-core.js": {
+      "sha256": "a2156a94ec3a47b02d7f7c5d2c0f788c585a818d419975d545a995de2c83da03",
+      "bytes": 6672,
+      "generated": false
+    },
+    "runtime.js": {
+      "sha256": "90391bf8f39d99f843d76b2dc764fd26c940638a7546ce9bdbaa50ef3ed38a02",
+      "bytes": 2067,
+      "generated": false
+    },
+    "search-history.js": {
+      "sha256": "6872a0b0877a5030b3ed5c94cf6ac126157548de9d5701db6c6b4084a2257134",
+      "bytes": 1760,
+      "generated": false
+    },
+    "settings.js": {
+      "sha256": "f770746c860b12a4bdfc93c4e13dab7ee62048e8a08d0295291d669387ba52ff",
+      "bytes": 5458,
+      "generated": false
+    },
+    "setup.html": {
+      "sha256": "a1db11eae696ce541da18f3e52548dbe0c8b1f0e76f241dba9896c7dea02da91",
+      "bytes": 3188,
+      "generated": false
+    },
+    "source-client.js": {
+      "sha256": "8a833c15b1b1a9151268eefb94201e04ccb575605b44e681f7aed641fc54be50",
+      "bytes": 8097,
+      "generated": false
+    },
+    "source-memory.js": {
+      "sha256": "54594ba43d158af59e53be6d5d595648fc759cb8770098d64e0449294542b7bc",
+      "bytes": 4276,
+      "generated": false
+    },
+    "style.css": {
+      "sha256": "b0dbabe7dc97aac6e37917c8c351457ca989e63b24ca264c0346f36f75a09fb9",
+      "bytes": 5425,
+      "generated": false
+    },
+    "sw.js": {
+      "sha256": "a3a400219995d12a7356047ab37ac5ac2fc98139d37c4ae449d27cf3b0918107",
+      "bytes": 1371,
+      "generated": false
+    },
+    "vault.js": {
+      "sha256": "f1442030d4f13c5def52cc3a1431c94f6e126aae7a9ba306c3bd68e3e838c326",
+      "bytes": 2579,
+      "generated": false
+    },
+    "watchlist.js": {
+      "sha256": "0e5c3c5e3a1b4bdc4e9df5ff7ad8c4b9948a981c1665f9ffe0b4e3fe997418da",
+      "bytes": 1929,
+      "generated": false
+    }
+  }
+}
