@@ -1,0 +1,35 @@
+name: Developer workbench snapshot
+on:
+  push:
+    paths: ['.github/workflows/workbench.yml']
+permissions:
+  contents: read
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          path: carstream
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: to-shreds/torbox-web-player
+          ref: 0b810f493cd19b2210a6bc4525a7c33cb486cfd5
+          fetch-depth: 0
+          path: canonical-web
+          persist-credentials: false
+      - run: |
+          mkdir -p workbench
+          git -C carstream bundle create "$PWD/workbench/carstream.bundle" --all
+          git -C canonical-web branch pinned-v1 0b810f493cd19b2210a6bc4525a7c33cb486cfd5
+          git -C canonical-web bundle create "$PWD/workbench/canonical-web.bundle" pinned-v1
+          sha256sum workbench/*.bundle > workbench/SHA256SUMS
+          echo 'Temporary working copies of repository history, not release sources. Repositories remain authoritative.' > workbench/README.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: developer-workbench
+          path: workbench/
+          retention-days: 1
