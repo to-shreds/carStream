@@ -1,0 +1,16 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<style>html,body{margin:0;padding:0;background:#fff;width:100%;height:100%;overflow:hidden}body{display:flex;align-items:center;justify-content:center}canvas{width:min(92vw,92vh);height:min(92vw,92vh);image-rendering:pixelated}</style>
+<script src="qrcode-bundle.js"></script></head>
+<body><canvas id="qr"></canvas><script>
+(function(){
+  var raw = location.hash.length > 1 ? decodeURIComponent(location.hash.substring(1)) : '';
+  var qr = new QRCode(-1, QRErrorCorrectLevel.M);
+  var bytes = unescape(encodeURIComponent(raw));
+  qr.addData(bytes); qr.make();
+  var modules=qr.getModuleCount(), border=4, scale=10, size=(modules+border*2)*scale;
+  var canvas=document.getElementById('qr'); canvas.width=size; canvas.height=size;
+  var ctx=canvas.getContext('2d'); ctx.fillStyle='#fff'; ctx.fillRect(0,0,size,size); ctx.fillStyle='#000';
+  for(var r=0;r<modules;r++) for(var c=0;c<modules;c++) if(qr.isDark(r,c)) ctx.fillRect((c+border)*scale,(r+border)*scale,scale,scale);
+})();
+</script></body></html>

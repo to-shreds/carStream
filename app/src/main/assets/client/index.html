@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0a1020">
+  <title>CarStream</title>
+  <link rel="stylesheet" href="/styles.css?v=1.4.0">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">▶</span>
+      <div class="brand-copy">
+        <strong>CarStream</strong>
+        <span id="tabletName"></span>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <button id="returnVideoButton" class="hidden">Back to video ▶</button>
+      <span id="connection" class="status waiting">waiting</span>
+      <button id="appFullscreenButton" class="app-fullscreen-button" title="Hide Chrome's bars and make CarStream fill the tablet screen">Big view</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <div id="connectionDetail" class="connection-detail">Enter the four-digit code shown on the phone.</div>
+    <button id="retryButton" class="retry hidden">Try again</button>
+
+    <section id="setup" class="panel setup">
+      <div class="setup-icon" aria-hidden="true">▶</div>
+      <h1>Connect this screen</h1>
+      <p>Enter the code from the phone, or scan its Watch QR code.</p>
+      <label for="nameInput">Screen name (optional)</label>
+      <input id="nameInput" maxlength="30" placeholder="Logan's tablet" autocomplete="off">
+      <label for="codeInput">Pairing code</label>
+      <input id="codeInput" maxlength="4" inputmode="numeric" pattern="[0-9]*" placeholder="0000" autocomplete="one-time-code">
+      <button id="setupButton" class="primary setup-connect">Connect and fill screen</button>
+      <p class="small">The screen name is remembered. The pairing code changes whenever CarStream starts.</p>
+    </section>
+
+    <section id="fatal" class="panel error hidden"></section>
+
+    <section id="lockedBanner" class="locked hidden">
+      Parent control is on. Playback is controlled from the phone.
+    </section>
+
+    <div id="viewerShell" class="viewer-shell hidden">
+      <section id="playerPanel" class="player-panel">
+        <div id="videoStage" class="video-stage" tabindex="0" aria-label="Video player">
+          <video id="video" playsinline preload="metadata"></video>
+
+          <div id="emptyPlayerState" class="empty-player-state">
+            <div class="empty-play-icon" aria-hidden="true">▶</div>
+            <strong>Choose something to watch</strong>
+            <span>Tap a show, then an episode.</span>
+          </div>
+
+          <div id="videoOverlay" class="video-overlay visible">
+            <div class="overlay-top">
+              <button id="watchLibraryButton" class="overlay-button">‹ Episodes</button>
+              <div class="overlay-title-wrap">
+                <div class="overlay-kicker">NOW PLAYING</div>
+                <div id="overlayTitle" class="overlay-title">Nothing playing</div>
+              </div>
+              <button id="overlayFullscreenButton" class="overlay-button compact" aria-label="Enter video full screen">Video full screen</button>
+            </div>
+
+            <div class="overlay-center" aria-label="Playback controls">
+              <button id="overlayBackButton" class="overlay-button round" aria-label="Go back 10 seconds">−10</button>
+              <button id="overlayPlayButton" class="overlay-button round primary-round" aria-label="Play or pause">Play</button>
+              <button id="overlayForward10Button" class="overlay-button round" aria-label="Go forward 10 seconds">+10</button>
+            </div>
+
+            <div id="skipPrompt" class="skip-prompt hidden" role="status" aria-live="polite">
+              <button id="skipSegmentButton" class="skip-segment-button">Skip intro</button>
+              <button id="keepWatchingButton" class="keep-watching-button hidden">Keep watching</button>
+            </div>
+
+            <div class="overlay-bottom">
+              <div class="seek-line">
+                <input id="seekSlider" type="range" min="0" max="1000" value="0" aria-label="Video position">
+                <span id="overlayTimeText" class="overlay-time">0:00 / 0:00</span>
+              </div>
+              <div class="overlay-actions">
+                
+                <button id="overlayNextButton" class="overlay-button">Next episode</button>
+                <details id="playerOptions" class="player-options">
+                  <summary>More</summary>
+                  <div class="options-menu">
+                    <button id="autoNextButton" class="overlay-button">Auto next: On</button>
+                    <button id="startOverButton" class="overlay-button">Start over</button>
+                    <button id="overlayForward30Button" class="overlay-button">+30 sec</button>
+                  </div>
+                </details>
+              </div>
+            </div>
+          </div>
+
+          <button id="gestureButton" class="gesture hidden">Tap once to allow playback</button>
+        </div>
+
+        <div class="player-summary">
+          <div class="player-summary-text">
+            <h2 id="nowTitle">Nothing playing</h2>
+            <div class="player-status-row">
+              <span id="playerModeBadge" class="player-mode-badge">Ready</span>
+              <div id="playerHint" class="player-hint">Pick a video from the library.</div>
+            </div>
+          </div>
+          <div class="summary-actions">
+            <button id="rawFallbackButton" class="raw-fallback hidden">Try original</button>
+            <div id="timeText" class="time">0:00 / 0:00</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="libraryPanel" class="panel library-panel">
+        <div class="library-heading">
+          <div>
+            <div class="eyebrow">LIBRARY</div>
+            <h1 id="libraryTitle">Pick a show</h1>
+          </div>
+          <details class="screen-options"><summary>Screen options</summary><button id="renameButton" class="secondary rename-button">Rename screen</button></details>
+        </div>
+
+        <div class="search-wrap">
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input id="search" type="search" placeholder="Search shows, movies, or episodes">
+        </div>
+
+        <div class="folder-toolbar">
+          <button id="folderRootButton" class="secondary">All shows</button>
+          <button id="folderUpButton" class="secondary">Back</button>
+          <button id="skipFoldersButton" class="secondary accent-button" title="Skip useless single-folder levels and stop at the first useful choice">Skip junk folders</button>
+        </div>
+
+        <button id="playFolderButton" class="primary hidden">▶ Play from first episode</button>
+        <div id="folderPath" class="folder-path">All shows</div>
+        <div id="libraryMessage" class="message">Loading library...</div>
+        <div id="library" class="library"></div>
+      </section>
+    </div>
+  </main>
+
+  <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+
+  <noscript><div class="panel error">JavaScript is disabled. Enable it and reload CarStream.</div></noscript>
+  <script>
+    window.setTimeout(function () {
+      if (!window.__carstreamClientLoaded) {
+        document.getElementById("connection").textContent = "offline";
+        document.getElementById("connectionDetail").textContent = "The CarStream script did not load. Reload this page once.";
+      }
+    }, 15000);
+  </script>
+  <script src="/hls.js?v=1.7.0"></script>
+  <script src="/app.js?v=1.4.0"></script>
+</body>
+</html>

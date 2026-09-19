@@ -1,0 +1,18 @@
+Verifies
+Verified using v1 scheme (JAR signing): false
+Verified using v2 scheme (APK Signature Scheme v2): false
+Verified using v3 scheme (APK Signature Scheme v3): true
+Verified using v3.1 scheme (APK Signature Scheme v3.1): false
+Verified using v4 scheme (APK Signature Scheme v4): false
+Verified for SourceStamp: false
+Number of signers: 1
+Signer #1 certificate DN: CN=CarStream Local Build, OU=CarStream, O=Local, L=Easton, ST=Massachusetts, C=US
+Signer #1 certificate SHA-256 digest: 57097bb3ab2cc2d64276801127f396bd2455894b6c18025aff48e26f9612d116
+Signer #1 certificate SHA-1 digest: eaae67f08831424a8858795f36e87c9a08910731
+Signer #1 certificate MD5 digest: 82aa496bb711eaf1c9caad3535c96655
+Signer #1 key algorithm: RSA
+Signer #1 key size (bits): 3072
+Signer #1 public key SHA-256 digest: fdb7b6bced13054f1e187579fdc74ed48b7d974f83469a3c3a8ed0590693359f
+Signer #1 public key SHA-1 digest: c65b49b4eacd5f570a9636666314f78469bf6f05
+Signer #1 public key MD5 digest: cb8bf3a1518fffac34e96683cfd6944b
+/workspace/scratch/db52568147fe/deliverables/CarStream-v1.5.0.apk

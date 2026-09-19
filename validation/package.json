@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "scripts": {
+    "test": "node test_logic.cjs && node test_stremio_setup.cjs"
+  },
+  "dependencies": {
+    "linkedom": "0.18.13"
+  }
+}

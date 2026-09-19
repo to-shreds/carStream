@@ -1,0 +1,30 @@
+{
+  "checks": [
+    "Persistent random add-on token",
+    "Wrong or missing token cannot browse",
+    "Manifest has no public unauthenticated variant",
+    "CORS preflight succeeds",
+    "Manifest exposes movie and series catalogs",
+    "HEAD and CORS on add-on JSON",
+    "Mutation methods rejected",
+    "Elena first; ready downloads grouped into shows",
+    "Standalone movie catalog",
+    "Encoded ampersand and plus survive catalog search",
+    "Unready episode omitted",
+    "Natural episode ordering; filename overrides source episode marker",
+    "Stream URL uses local socket address, ignores hostile Host header",
+    "Metadata embeds same local stream; no external metadata needed",
+    "Artwork local and remote source URLs absent",
+    "Unready videos have no stream",
+    "Wrong media type has no stream",
+    "Unknown metadata gives empty response",
+    "Full video bytes relayed through actual production server",
+    "Seeking preserves range, content range and exact bytes",
+    "Video HEAD forwards size without body",
+    "Direct play rejects unready media",
+    "Stream slots released and relayed bytes counted",
+    "Existing browser API still requires its pairing code",
+    "Pairing reset revokes old catalog and video links"
+  ],
+  "kind": "Real JVM HTTP/relay; fixture library/upstream and Android preferences; no Android UI, codec, cellular or Stremio app execution"
+}

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer"><title>CarStream for Stremio</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#101726;color:#f2f6ff;font:18px/1.55 system-ui,sans-serif}main{max-width:650px;margin:0 auto;padding:30px 22px}h1{font-size:32px;line-height:1.15;margin:8px 0 18px}p,li{color:#cad4e5}li{margin:14px 0}ol{padding-left:25px}.eyebrow{color:#82dbc4;font-weight:700;font-size:14px;letter-spacing:2px}button{font:inherit;font-weight:700;background:#82dbc4;color:#101726;border:0;border-radius:14px;padding:17px 20px;width:100%;cursor:pointer}textarea{display:block;width:100%;height:115px;border:1px solid #596880;border-radius:12px;margin:14px 0;padding:12px;background:#1b263d;color:white;font:15px/1.45 monospace;resize:vertical}.status{border-radius:12px;background:#1b263d;padding:14px;font-size:16px}.note{font-size:15px}a{color:#82dbc4}details{margin-top:26px}summary{cursor:pointer}strong{color:#fff}
+</style></head><body><main>
+<div class="eyebrow">CARSTREAM · TRY STREMIO</div>
+<h1>Your phone, in Stremio.</h1>
+<p>Keep this tablet on CarStream Wi-Fi, even when Android says it has no Internet. Keep CarStream running on your phone.</p>
+<p id="status" class="status" role="status">Checking the phone…</p>
+<ol><li>Tap <strong>Copy add-on address</strong> below.</li>
+<li>Open the <strong>Stremio Android app</strong>. In Add-ons, use the option to add an add-on by URL. Paste the full address and install <strong>CarStream on your phone</strong>.</li>
+<li>Open <strong>CarStream Shows</strong> or <strong>CarStream Movies</strong> in Stremio's catalogs. Pick a download, then an episode.</li></ol>
+<button id="copy" type="button">Copy add-on address</button>
+<textarea id="address" readonly aria-label="CarStream add-on address" spellcheck="false"></textarea>
+<p class="note">Keep <strong>http://</strong> at the start of the address. This is a private local connection. The phone fetches the video using mobile data; the tablet receives it over CarStream Wi-Fi.</p>
+<details><summary>Having trouble?</summary>
+<p>Install and open Stremio while connected to home Wi-Fi first. Finish any sign-in there, then reconnect to CarStream Wi-Fi.</p>
+<p>If Stremio refuses the HTTP address, cannot install without Internet, or stays on its loading screen, this test has found a Stremio compatibility limit. Take a screenshot of the message and use <strong>Watch QR</strong> on the phone to return to Chrome.</p>
+<p>If the list is empty, refresh <strong>Library</strong> on the phone. Only videos marked ready appear. If the phone's Wi-Fi address changes or you reset the pairing code, remove the old CarStream add-on and install it again using this page.</p>
+<p>Use Stremio's playback controls. CarStream's browser remote controls, parent lock, Smart Skip and browser watch progress do not control Stremio. Automatic next depends on Stremio's settings.</p>
+<p>Keep the add-on address private. A signed-in Stremio account may sync it to your other devices. It contains a local access token, never your TorBox API key.</p>
+</details></main><script>
+'use strict';
+const base = new URL('./', location.href);
+const address = document.getElementById('address');
+address.value = new URL('manifest.json', base).href;
+document.getElementById('copy').addEventListener('click', async function () {
+  let copied = false;
+  if (navigator.clipboard && window.isSecureContext) {
+    try { await navigator.clipboard.writeText(address.value); copied = true; } catch (_) {}
+  }
+  if (!copied) {
+    address.focus(); address.select(); address.setSelectionRange(0, address.value.length);
+    try { copied = document.execCommand('copy'); } catch (_) {}
+  }
+  this.textContent = copied ? 'Copied. Open Stremio next.' : 'Address selected. Touch and hold to copy.';
+});
+(async function () {
+  const status = document.getElementById('status');
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 10000);
+  try {
+    const paths = ['manifest.json', 'catalog/series/carstream.json', 'catalog/movie/carstream.json'];
+    const responses = await Promise.all(paths.map(async path => {
+      const response = await fetch(new URL(path, base), {signal: controller.signal, cache: 'no-store'});
+      if (!response.ok) throw new Error('Phone returned ' + response.status);
+      return response.json();
+    }));
+    if (responses[0].id !== 'com.carstream.local') throw new Error('Unexpected add-on');
+    const count = responses[1].metas.length + responses[2].metas.length;
+    status.textContent = count ? 'Phone reachable · ' + count + ' ready download(s). Try installing the add-on next.' : 'Phone reachable. Refresh Library on the phone to load ready videos.';
+  } catch (_) {
+    status.textContent = 'Cannot reach the add-on. Keep CarStream running, join its Wi-Fi, then scan Stremio setup again.';
+  } finally { clearTimeout(timer); }
+})();
+</script></body></html>

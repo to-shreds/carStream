@@ -1,0 +1,372 @@
+{
+  "source_repository": "to-shreds/ProjectStatus",
+  "source_path": "projects/carstream/artifacts/CarStream-Source-v1.5.0.zip",
+  "source_sha256": "cc05a9428424ac347cbef4b700f98970c808e11fc047c7ef41117c029dd2e553",
+  "baseline_apk_sha256": "08f7660124bf88e6e52c3d00df7efee2cbbb1326d22ebe85861498ba33ff6518",
+  "package": "com.carstream.app",
+  "version": "1.5.0",
+  "version_code": 25,
+  "signing_certificate_sha256": "57097bb3ab2cc2d64276801127f396bd2455894b6c18025aff48e26f9612d116",
+  "files": {
+    "INSTALL.txt": {
+      "sha256": "0fd4f011ef5c7194e9bf6e48dc9a975e7a4a3badaabda5584f8bfe2a2e09a5c0",
+      "git_blob": "e182deae0aeff35845a9df707be540f5ed88d27f",
+      "bytes": 2362
+    },
+    "LICENSE": {
+      "sha256": "1126322e2cc8d165adc4c792eeb195717de2bcc7b39be1ce77959d78e87ef685",
+      "git_blob": "14fac913ccf80234b1848540089a3bbcb6e5283d",
+      "bytes": 1056
+    },
+    "README.md": {
+      "sha256": "b753d7b71f644c336cb8c21545b971928daf301a0f3954c1f45948124d62856f",
+      "git_blob": "051a9845ba45b359fd52666c858525aacb472de8",
+      "bytes": 2551
+    },
+    "SECURITY.md": {
+      "sha256": "569e492b9d4108c76c47b6177524c3db96ad0a72110921a72e75713b2cf2c6db",
+      "git_blob": "ee5b5ad11ead59c5217098b2e06baec45e175764",
+      "bytes": 1131
+    },
+    "THIRD_PARTY_NOTICES.md": {
+      "sha256": "f5372ffd0b6fe264e2b7f69a1bfdeb71334f22b2f75a89f3aaf8392a7c5fe640",
+      "git_blob": "0be6a4ec6ca04a6ef686a73df7d3401b272676bd",
+      "bytes": 945
+    },
+    "app/build.gradle": {
+      "sha256": "e3256f9353d28508eec765b0a423b9d63cbb34bcafae8bb8f23650eb08040820",
+      "git_blob": "70934408c2e600e195a86c391b1d388c683fcf9c",
+      "bytes": 789
+    },
+    "app/proguard-rules.pro": {
+      "sha256": "963dcab4af9fc67ce0bf8f51e651e8b50c3ac6f8d242b0090e5d59de81bea969",
+      "git_blob": "57cf441d712a9df283bad8c3df5edd3e5b81a6de",
+      "bytes": 81
+    },
+    "app/src/main/AndroidManifest.xml": {
+      "sha256": "7b0819fd25312d89ca5203cca81eecc8f94dd72caded07c7644fc6d2bfaaafaa",
+      "git_blob": "9ad903c2eef8a0d3448490603c5f245569479537",
+      "bytes": 1951
+    },
+    "app/src/main/assets/client/app.js": {
+      "sha256": "5228f69aa1677083d425e645a1c0ea32aeeae0c0f11699b05daf92ed91cb806c",
+      "git_blob": "08be38deb31d3c43bdb9541b0de8f5769127fa49",
+      "bytes": 76361
+    },
+    "app/src/main/assets/client/index.html": {
+      "sha256": "ccd6f0d94db0b09ad69d0cfeb90ff673de658a5c0bb2fcf1ce9041fb681a5145",
+      "git_blob": "ad3806c3fbb0e14631c5eb9ec188960e124de923",
+      "bytes": 7607
+    },
+    "app/src/main/assets/client/styles.css": {
+      "sha256": "4315471fef63bac7573015ca9ab76f59bd56edf1ef16e59486c47355e77896f4",
+      "git_blob": "0e9de63581de706ad8a8b33c6929b04b2b08afe0",
+      "bytes": 21583
+    },
+    "app/src/main/assets/player/app.js": {
+      "sha256": "5228f69aa1677083d425e645a1c0ea32aeeae0c0f11699b05daf92ed91cb806c",
+      "git_blob": "08be38deb31d3c43bdb9541b0de8f5769127fa49",
+      "bytes": 76361
+    },
+    "app/src/main/assets/player/index.html": {
+      "sha256": "ccd6f0d94db0b09ad69d0cfeb90ff673de658a5c0bb2fcf1ce9041fb681a5145",
+      "git_blob": "ad3806c3fbb0e14631c5eb9ec188960e124de923",
+      "bytes": 7607
+    },
+    "app/src/main/assets/player/styles.css": {
+      "sha256": "4315471fef63bac7573015ca9ab76f59bd56edf1ef16e59486c47355e77896f4",
+      "git_blob": "0e9de63581de706ad8a8b33c6929b04b2b08afe0",
+      "bytes": 21583
+    },
+    "app/src/main/assets/qr/LICENSE.txt": {
+      "sha256": "27d449a4a8a8ec3a7719a4e1d4e79e5bd19dd7bc0c88e41b3b13e8867c140028",
+      "git_blob": "016812b9868c474469ba7b0c1915ade75302255a",
+      "bytes": 1125
+    },
+    "app/src/main/assets/qr/qr.html": {
+      "sha256": "054ab1fc1d9f27e42283efd4b0d7378b140641c7da04a62c5fd9839a665ed73a",
+      "git_blob": "ba1c0ded3e4223635c49533a95a0b9bbc4717ea0",
+      "bytes": 1137
+    },
+    "app/src/main/assets/qr/qrcode-bundle.js": {
+      "sha256": "0f4ad2931a03176a6f6aed1603a99dca56dc2ebbcd3e5afaaa5a86b2c04cc283",
+      "git_blob": "13f374c374f69f6d1bc754afb7f1568ad5fee094",
+      "bytes": 29133
+    },
+    "app/src/main/assets/stremio/setup.html": {
+      "sha256": "726f83a6c42a952b62cc369c8ba2b041fe25490dc90a14acc4e678b689bc811c",
+      "git_blob": "9254ae2167b07c9fc033eb09c7a5b5cf164031a5",
+      "bytes": 5043
+    },
+    "app/src/main/java/com/carstream/app/AppSettings.java": {
+      "sha256": "71190e97af41ef80e5eb6ff39e710277a0e6b2ddada202ddaa2ea15349a5855a",
+      "git_blob": "b7833c3a5947808d090b768da648c175ec81655e",
+      "bytes": 10762
+    },
+    "app/src/main/java/com/carstream/app/BuildInfo.java": {
+      "sha256": "fb098c76164cd92f638e4dbfe89486c478defc0eab88a8f56ed6438a4408ddec",
+      "git_blob": "e85ed82e038c8eaf9bbeffbae7e5fd0b2d9c1f69",
+      "bytes": 191
+    },
+    "app/src/main/java/com/carstream/app/CarStreamApplication.java": {
+      "sha256": "2f8f839273dada4a44556403fdcd96e25134fb192bc4cd5abc030efe448d0106",
+      "git_blob": "51a4b0cfd96e648c95cc2f7156401740bda6d7d8",
+      "bytes": 433
+    },
+    "app/src/main/java/com/carstream/app/CellularNetworkProvider.java": {
+      "sha256": "367d6f7a48d87df0dfc421a9a2ad6220b2c7a73646f476c0ebecc8b6be135d19",
+      "git_blob": "3807031cdba713dd92e07d5ae17f70c119f56d17",
+      "bytes": 9999
+    },
+    "app/src/main/java/com/carstream/app/ClientBundleManager.java": {
+      "sha256": "f6a95cf742112d1c02cf285aa4bf6ff9f3efae6f5c25f160725c32b5b59b2586",
+      "git_blob": "28e026589c179f5b86487ffd3088ef6d7f23c30d",
+      "bytes": 7844
+    },
+    "app/src/main/java/com/carstream/app/ClientRegistry.java": {
+      "sha256": "cd4761a4bd9e6ffbfd401dcc91fe19830e3c9746039f8d6219d6757a1c61b737",
+      "git_blob": "1b6d83dbed5ab6d213af7ed3ae2cb8708814f124",
+      "bytes": 4746
+    },
+    "app/src/main/java/com/carstream/app/ClientSession.java": {
+      "sha256": "89a9d4c0eee8181548a57fd9d7dfeb841a0e18393229e001cb5f60d5730c3ef5",
+      "git_blob": "6074a3f72f2781cb6159b74bccd92f6ab6329b86",
+      "bytes": 2526
+    },
+    "app/src/main/java/com/carstream/app/ControlMode.java": {
+      "sha256": "18db49bde958d1e115193bd010a5bc1f825099499d13e56ac205c8ed715fe8e7",
+      "git_blob": "eeb18fe402f3c33f3aa2afc41b762345dcd99aaa",
+      "bytes": 722
+    },
+    "app/src/main/java/com/carstream/app/CrashReporter.java": {
+      "sha256": "60bd7e3139b5e18d655f64a629539e167498aab7e6530cd4b0a041f7c5604a61",
+      "git_blob": "31b062449962dff2419028d204508c7a0e28bcdf",
+      "bytes": 3647
+    },
+    "app/src/main/java/com/carstream/app/EpisodeIdentity.java": {
+      "sha256": "4a5c9a891647258790fa2df1181d5730ecc5d2170893cf002b89cab1ee2ab8d0",
+      "git_blob": "4c7f481ce1cb162b5ed20036262593d22f34b6be",
+      "bytes": 7833
+    },
+    "app/src/main/java/com/carstream/app/EventLogger.java": {
+      "sha256": "061b6beb5f536239f5f7838309a6e3939d47c2c05116278720888a8a1858acac",
+      "git_blob": "301fee9d357c4751e3da68274f40d311c0f297c7",
+      "bytes": 9110
+    },
+    "app/src/main/java/com/carstream/app/HlsScriptCache.java": {
+      "sha256": "67132dc5d635d8d84e6ddcca12277d07c68edb0a2afa97777dcbd47c1fd48e64",
+      "git_blob": "9e4b81824229d149c4ecebee6b62eb2aaff1b0a8",
+      "bytes": 8039
+    },
+    "app/src/main/java/com/carstream/app/HlsTranscodeManager.java": {
+      "sha256": "948b9a05ca69dfe2927da0a218179a987183935f3ab1c67faff6c3ead93fbcf8",
+      "git_blob": "3597a53011a038a16fbd90f3f253bc8da3399526",
+      "bytes": 13453
+    },
+    "app/src/main/java/com/carstream/app/HostService.java": {
+      "sha256": "945efd02654bd50e4bc31ab2c500a554cad39152cdccd8467c914ec200fe81c8",
+      "git_blob": "d9bab016971c40709cc031a9bb9993d9016faed6",
+      "bytes": 26365
+    },
+    "app/src/main/java/com/carstream/app/IoUtils.java": {
+      "sha256": "f227099266f5ae15065014555bfc004a369806ff29858f5e1726a8933e8916b3",
+      "git_blob": "e635e3c88db4a07c288fbb585863e8c51d85d9a0",
+      "bytes": 2915
+    },
+    "app/src/main/java/com/carstream/app/LibraryNavigator.java": {
+      "sha256": "8e82932f30157e23332800fe052cb9e5890b16db2e35038b02c5a6f6540cac16",
+      "git_blob": "2282b389cf7aba0615381b4f3168b15ed65b88e3",
+      "bytes": 13497
+    },
+    "app/src/main/java/com/carstream/app/LocalHttpServer.java": {
+      "sha256": "903bcce4b363cddc3c11ac51cfa3b5a8884a1007cd1664665eb4266c47ea156f",
+      "git_blob": "10610062c9820e188414940d79e8f33cbf5f7dcb",
+      "bytes": 57654
+    },
+    "app/src/main/java/com/carstream/app/MainActivity.java": {
+      "sha256": "513f00f7d076fc6410da54c205e499b91e861745f6646e1025ec1a9b4f7d7a8e",
+      "git_blob": "df69bb42f0ec07985c4bdbf0699b8e53efa37977",
+      "bytes": 91724
+    },
+    "app/src/main/java/com/carstream/app/MediaItem.java": {
+      "sha256": "936e88e180ab52dd3f34737f43326e4483dc0da39bd4cd9b54ae80a90393a9af",
+      "git_blob": "26574d15b62c4325cb82aeb63cbc9547f4a634ef",
+      "bytes": 6006
+    },
+    "app/src/main/java/com/carstream/app/PlaybackCommand.java": {
+      "sha256": "800766da6ec4f1011cb9b79d7911116f9b0139bc65bbe3d6036504b000e7ce46",
+      "git_blob": "21b033aaf99d9c4f1a4cc5c6cdc4a6378487eaf1",
+      "bytes": 979
+    },
+    "app/src/main/java/com/carstream/app/SecureStore.java": {
+      "sha256": "a6bec711dd60e10a4a34c1640781778556779d42260dd395d144da9691d6974c",
+      "git_blob": "eabe98c84a4b46d33be67586e094b6e6b2d89faf",
+      "bytes": 2971
+    },
+    "app/src/main/java/com/carstream/app/SkipMarkerResolver.java": {
+      "sha256": "66d61aea69af22e08e5ecfee1e2b4b53d39b20707670a8fb99ec2374dd6627d1",
+      "git_blob": "1c9ab7743f419e773f0a415e867312a3fdf8fd3e",
+      "bytes": 13405
+    },
+    "app/src/main/java/com/carstream/app/SkipMarkerStore.java": {
+      "sha256": "60a6b890f9eb0cc3cfc1e1d90041db79266f344a22949d07fbb960c75d04983f",
+      "git_blob": "21f20fdcdcc3b05404eb40585079045eb7dead60",
+      "bytes": 13498
+    },
+    "app/src/main/java/com/carstream/app/SkipSegment.java": {
+      "sha256": "4c60ca81983a6c5830dc18dbf3fd2df3f0526bedee99b12441c8de4141492c88",
+      "git_blob": "fe8545b92c5dc4dffe05099fb67fc61cc4df00b2",
+      "bytes": 5168
+    },
+    "app/src/main/java/com/carstream/app/StreamRegistry.java": {
+      "sha256": "ddc806ae9ec87edfedbb1c020992df80b6f86bc0e1123511b6643a1bc3cc63c3",
+      "git_blob": "c315ba39b5438b17dc9392786dd736cdfba809b8",
+      "bytes": 4696
+    },
+    "app/src/main/java/com/carstream/app/StremioAddon.java": {
+      "sha256": "d8b3a0e590bd4260d203d7b856feb31f3697fbff99d2a35258f8a5b4d029e849",
+      "git_blob": "27f20b194849a48c3dc75f89731064b5d85bcc35",
+      "bytes": 9797
+    },
+    "app/src/main/java/com/carstream/app/StremioPoster.java": {
+      "sha256": "3ba8d431af73c13056dca780573ccb717284bc699a88d2c3090b9b1e9061c426",
+      "git_blob": "9909992163ef9de4605588b00aa8c06ae3d4c737",
+      "bytes": 2070
+    },
+    "app/src/main/java/com/carstream/app/TorBoxClient.java": {
+      "sha256": "1f52710dd3cd10bd4062cb03093e419b7ee74e4dec20a00e072dd9d17bb4adcb",
+      "git_blob": "866bf6d0c5104145ef2890ae62cc1308a0d0e731",
+      "bytes": 21417
+    },
+    "app/src/main/java/com/carstream/app/WebDavCatalog.java": {
+      "sha256": "60ce995cd35ebc6e56dbf140a873639dcf2a6e5c7232cedea3e43dcca0daafd0",
+      "git_blob": "0117c6a11019d105be3935149566af629398bf77",
+      "bytes": 9957
+    },
+    "app/src/main/java/com/carstream/app/WifiDirectController.java": {
+      "sha256": "039e9ae57824cf471fe50c835b2c28bf6f79bc69e67f8b771091b6e227fe6297",
+      "git_blob": "c2f4a6d5211d8d513995b22968309583c6f6ac61",
+      "bytes": 17376
+    },
+    "app/src/main/res/drawable/ic_carstream.png": {
+      "sha256": "2495f954904c0868a18ee23a05e77013658c6770443692498f30544b2fe3334f",
+      "git_blob": "dc3df20cfd688eb234e5deaa89c97bea2f9907e2",
+      "bytes": 2463
+    },
+    "app/src/main/res/drawable/ic_launcher.png": {
+      "sha256": "2495f954904c0868a18ee23a05e77013658c6770443692498f30544b2fe3334f",
+      "git_blob": "dc3df20cfd688eb234e5deaa89c97bea2f9907e2",
+      "bytes": 2463
+    },
+    "app/src/main/res/drawable/wifi_qr_default.png": {
+      "sha256": "7c6a77e1a21e59df2debcf28d90cc4f906137dae1ce967def243b11ea5c8c207",
+      "git_blob": "1e18f1dc5a619be554a903ed85f52c9de510663b",
+      "bytes": 2507
+    },
+    "app/src/main/res/mipmap-hdpi/ic_launcher.png": {
+      "sha256": "f34b132ffac9eeeaa89585a56c3b2e3e0ba64b1d041f7d13e03cc6386f18a0b3",
+      "git_blob": "ed1e2be25d7978a9f525ce2c9e51e4dd05022dd5",
+      "bytes": 708
+    },
+    "app/src/main/res/mipmap-mdpi/ic_launcher.png": {
+      "sha256": "db2423cee4d4c0353b9d86d4755c23300e345b1a6fae10d6b44078203039c5d6",
+      "git_blob": "a08ee4479cef94e0dec8a34125f959794116259d",
+      "bytes": 500
+    },
+    "app/src/main/res/mipmap-xhdpi/ic_launcher.png": {
+      "sha256": "5e179340528e2afd09094cf493f3e7ef73080d0a318aac5208d7c63d0c86db4b",
+      "git_blob": "e6d28448db765f26a30edb03a24fb18fe3269bdb",
+      "bytes": 906
+    },
+    "app/src/main/res/mipmap-xxhdpi/ic_launcher.png": {
+      "sha256": "c46e39c92772d6c7ce8f8e039e9b8deabd5a3f669b5d2529804414bf99f7789c",
+      "git_blob": "8a6cb63920142b56caa19480cf5d646491a1c15d",
+      "bytes": 1342
+    },
+    "app/src/main/res/mipmap-xxxhdpi/ic_launcher.png": {
+      "sha256": "4d7ef914e539e5806e9e646a0a097c02ca56c8ed0514850c93d16a26711835f1",
+      "git_blob": "3ff0128dc0e24037961f97eed779ca7ba0a32e7c",
+      "bytes": 1813
+    },
+    "app/src/main/res/values/public.xml": {
+      "sha256": "501a9dd8fc36957ff72f7fa4680bc8981eefb24e32cdcf0d12ddaef72a76ae8c",
+      "git_blob": "b6f18b7fba5848d831e39f5f3638127cca6842db",
+      "bytes": 589
+    },
+    "app/src/main/res/values/strings.xml": {
+      "sha256": "e96ef20fb45dbe06e0a71373562d8def23bb2541c5a1d2de28d101dc4ede39a0",
+      "git_blob": "27119e39ff5a91f14d79a425246a62eeecd27b13",
+      "bytes": 270
+    },
+    "app/src/main/res/values/styles.xml": {
+      "sha256": "ec8490f8a703b692b243c9a20608d5589c3baeba25af14193dee7b0a1c922b58",
+      "git_blob": "a57a6e175e53e75cf41f3128b57dd4a9ab14695e",
+      "bytes": 519
+    },
+    "build.gradle": {
+      "sha256": "ae046bd29afaef5badaae189143151d12dbb327316a0f8eddbd81d9405b64b14",
+      "git_blob": "e6520ddf36383aece83dd5dcb8c11f5dfbc2b38b",
+      "bytes": 73
+    },
+    "gradle.properties": {
+      "sha256": "4294fea4fd94bb15f8dc50909378b380f6b6060b52ca602207897985954db0eb",
+      "git_blob": "01e7cff6bb164d4594e667aeeca606cc64d5e8c2",
+      "bytes": 158
+    },
+    "scripts/build_release.py": {
+      "sha256": "16568a77c9b645b7d12ea2953f297236ff659387ce4879119af45e7b968141fd",
+      "git_blob": "b93e697c162da56aca8fcd28d79caffd4e01d6ee",
+      "bytes": 2021
+    },
+    "settings.gradle": {
+      "sha256": "a89f1d28b40cb85fb52d7c432139f6cc1d8ee5f045364ef4fbb8789b1755fe1c",
+      "git_blob": "e5b5a590ad8dbe958f4200f754879fe08d61709e",
+      "bytes": 328
+    },
+    "validation/BUILD-REPORT.md": {
+      "sha256": "2f99d7a5c712bd5fef98705cdde00b5a7cc5db9babb8064afdc1224f9dcdfcb9",
+      "git_blob": "15778bde1e47a94195fcf15d6c4271938a9cc707",
+      "bytes": 4577
+    },
+    "validation/StremioIntegrationTest.java": {
+      "sha256": "17fb3ac3a0105f75c790f8ddd52afe880b03bd9a16907ae39b9c441c4bec8701",
+      "git_blob": "c4de137f7cd7e4c545f55fd2a4afaa9e1846ab03",
+      "bytes": 12067
+    },
+    "validation/final-build.log": {
+      "sha256": "35b7e33f69a15966996b67195db2d14a77766096953cab8cbe43400724b8fffb",
+      "git_blob": "6e6506f1f7e5908c547688822500f2adcc5945f5",
+      "bytes": 1069
+    },
+    "validation/logic-results.json": {
+      "sha256": "36613a909ed9851c1154b5e6b5d45b4ff5b745e71a25e427c648ca53f919cc69",
+      "git_blob": "0516e2ccdc7b868685f35a7d25d16fab828ded61",
+      "bytes": 951
+    },
+    "validation/package.json": {
+      "sha256": "659742cf410e78b8eacd4cd66778bbf168806c7d61f1291aac8391cb9aaad6b2",
+      "git_blob": "56102ced01ef211c6f8440422da3606460d48c56",
+      "bytes": 158
+    },
+    "validation/run_stremio_test.py": {
+      "sha256": "f37cfba1ada7e3c4d1636d2b440a3095b4171c088b460d4220e05a9544d79fb1",
+      "git_blob": "249e55c7528fdfff2dc865a13bae807d1e68c2fb",
+      "bytes": 1116
+    },
+    "validation/stremio-results.json": {
+      "sha256": "950b7c27e7def1964265a42f95dc5eca298a3613a0d25506aa052fb853f8b89f",
+      "git_blob": "cb26d85e0deab3e421170059916b631f04585773",
+      "bytes": 1394
+    },
+    "validation/test_logic.cjs": {
+      "sha256": "72a09d64f50080cb7ca82df0f658b71830c4ffe84ffb387c8f929b2a26cff5e3",
+      "git_blob": "978ba3c203a7d44b267ce9185b85abf9002fcb1b",
+      "bytes": 7347
+    },
+    "validation/test_stremio_setup.cjs": {
+      "sha256": "a28e3a02403176779b40b1f0759578fb64592f63810be478d3a2ee18c130b3a1",
+      "git_blob": "e644dbe8af3b53d0921f86ae625475a0f8d5b4a0",
+      "bytes": 1918
+    }
+  }
+}

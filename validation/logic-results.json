@@ -1,0 +1,17 @@
+{
+  "kind": "DOM integration with simulated media and API; no rendering or decoding",
+  "checks": [
+    "QR fragment prefills pairing code, clears URL, and optional name connects with auth headers",
+    "Browse-first view, Elena first when present, wrapper skipping, 25 cards, numeric order, unready episode disabled",
+    "Play from first episode selects episode 1 and opens watch view",
+    "Episodes pauses; Back to video returns and resumes",
+    "Resume uses saved time without confirmation; loading does not overwrite progress",
+    "Start over requests time zero",
+    "Ended event advances to next numbered episode",
+    "Manual Next advances; disabling Auto next prevents advancement and gives accurate finished text",
+    "Final ready episode stops rather than playing an unready video or another show",
+    "Search finds specific episode",
+    "Parent lock keeps browsing hidden and episode changing disabled"
+  ],
+  "playbackRequests": 6
+}

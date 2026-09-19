@@ -1,0 +1,38 @@
+CarStream 1.5.0: try Stremio on the tablets
+
+1. Install CarStream-v1.5.0.apk on the PHONE over the existing CarStream app.
+   Keep the current installation so its settings stay saved.
+2. On each tablet, install/open the Stremio Android app on home Wi-Fi first.
+   Complete any sign-in before joining the car network.
+   Official download: https://www.stremio.com/downloads
+3. Start CarStream on the phone with mobile data enabled. Refresh Library.
+   Leave ordinary Android Internet tethering off.
+4. Join CarStream Wi-Fi on the tablet using 1. Join Wi-Fi.
+   Stay connected when Android reports no Internet.
+5. Tap the new Stremio setup button on the phone. Scan its QR on the tablet
+   and open the setup page in Chrome. It checks the local add-on connection.
+6. Tap Copy add-on address. In Stremio's Add-ons section, use the option to
+   add by URL. Paste the entire http:// address and install CarStream on your phone.
+   Keep http://; do not replace it with https:// or stremio://.
+7. Open CarStream Shows or CarStream Movies in Stremio's catalogs.
+   Select a ready download and episode. Try picture, sound, seeking and Next.
+
+This is an experimental integration. Its local server and video relay passed
+automated tests, but Stremio installation and playback without tablet Internet
+have not been tested on actual Android devices. If Stremio refuses the address
+or cannot install/load on the local network, send a screenshot of that screen.
+Use 2. Watch QR to continue with the existing Chrome player.
+
+The phone still needs Internet for TorBox. All add-on catalogs, metadata,
+title cards and video URLs are served by the phone. Stremio's other catalogs
+and account services can still try to use Internet and may not work locally.
+No episodes are included. Only existing TorBox files marked ready are listed.
+
+Stremio controls playback and watch progress. CarStream's browser remote
+controls, parent lock and Smart Skip do not control Stremio. Automatic next
+depends on Stremio settings; season/episode numbering is inferred from filenames.
+
+If the hotspot address changes, remove the old CarStream add-on and install
+from a fresh Stremio setup QR. Resetting CarStream's pairing code revokes the
+old Stremio links too. Treat the add-on URL as private; it contains a random
+local access token, not the TorBox API key. Stremio may sync it with your account.
